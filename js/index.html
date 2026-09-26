@@ -24,6 +24,8 @@
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-lg-3 gap-lg-1">
                     <li class="nav-item"><a class="nav-link px-3 fw-medium active" href="#home">Home</a></li>
                     <li class="nav-item"><a class="nav-link px-3 fw-medium" href="#about">Tentang</a></li>
+                    <li class="nav-item"><a class="nav-link px-3 fw-medium" href="#skills">Keahlian</a></li>
+                    <li class="nav-item"><a class="nav-link px-3 fw-medium" href="#projects">Proyek</a></li>
                     <li class="nav-item"><a class="nav-link px-3 fw-medium" href="#experience">Pengalaman</a></li>
                     <li class="nav-item"><a class="nav-link px-3 fw-medium" href="#contact">Kontak</a></li>
                 </ul>
@@ -78,7 +80,7 @@
             </div>
         </section>
 
-        <section id="about" class="py-5">
+        <section id="about" class="py-5 reveal-section">
         <div class="container py-4">
             <div class="text-center mb-5">
                 <h2 class="fw-bold display-6 mb-2">Tentang <span class="gradient-text">Saya</span></h2>
@@ -128,7 +130,101 @@
         </div>
         </section>
 
-        <section id="experience" class="py-5">
+        <section id="skills" class="portfolio-section">
+            <div class="container">
+                <header class="section-heading">
+                    <p class="section-eyebrow">Kemampuan</p>
+                    <h2>Keahlian</h2>
+                    <p>Teknologi dan bidang yang sedang saya pelajari.</p>
+                </header>
+
+                <div class="skills-grid">
+                    <article class="skill-group">
+                        <h3><i class="bi bi-hdd-network" aria-hidden="true"></i> Networking</h3>
+                        <ul class="skill-list">
+                            <li>MikroTik</li>
+                            <li>IP Addressing</li>
+                            <li>Topology</li>
+                            <li>Hardware</li>
+                        </ul>
+                    </article>
+
+                    <article class="skill-group">
+                        <h3><i class="bi bi-code-slash" aria-hidden="true"></i> Web Development</h3>
+                        <ul class="skill-list">
+                            <li>HTML5</li>
+                            <li>CSS3</li>
+                            <li>JavaScript</li>
+                            <li>Git / GitHub</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="portfolio-section projects-section">
+            <div class="container">
+                <header class="section-heading">
+                    <p class="section-eyebrow">Karya pilihan</p>
+                    <h2>Proyek</h2>
+                    <p>Contoh proyek di bidang jaringan dan pengembangan web.</p>
+                </header>
+
+                <div class="projects-grid">
+                    <article class="project-card">
+                        <img class="project-image" src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Rak server dan perangkat jaringan" loading="lazy" decoding="async">
+                        <div class="project-content">
+                            <h3>Simulasi Jaringan</h3>
+                            <p>Rancangan topologi dan konfigurasi jaringan untuk kebutuhan laboratorium.</p>
+                            <ul class="tech-list" aria-label="Teknologi yang digunakan">
+                                <li>MikroTik</li>
+                                <li>IP Addressing</li>
+                            </ul>
+                            <div class="project-actions">
+                                <a href="#" aria-label="Live demo Simulasi Jaringan">Live Demo <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+                                <a href="#" aria-label="GitHub repo Simulasi Jaringan">GitHub Repo <i class="bi bi-github" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <img class="project-image" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Laptop untuk pengembangan website" loading="lazy" decoding="async">
+                        <div class="project-content">
+                            <h3>Portofolio Pribadi</h3>
+                            <p>Website responsif untuk menampilkan profil, keahlian, dan pengalaman.</p>
+                            <ul class="tech-list" aria-label="Teknologi yang digunakan">
+                                <li>HTML5</li>
+                                <li>CSS3</li>
+                                <li>JavaScript</li>
+                            </ul>
+                            <div class="project-actions">
+                                <a href="#" aria-label="Live demo Portofolio Pribadi">Live Demo <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+                                <a href="#" aria-label="GitHub repo Portofolio Pribadi">GitHub Repo <i class="bi bi-github" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <img class="project-image" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Tampilan dashboard analitik" loading="lazy" decoding="async">
+                        <div class="project-content">
+                            <h3>Dashboard Data</h3>
+                            <p>Contoh antarmuka dashboard sederhana untuk menyajikan informasi secara ringkas.</p>
+                            <ul class="tech-list" aria-label="Teknologi yang digunakan">
+                                <li>HTML5</li>
+                                <li>CSS3</li>
+                                <li>JavaScript</li>
+                            </ul>
+                            <div class="project-actions">
+                                <a href="#" aria-label="Live demo Dashboard Data">Live Demo <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+                                <a href="#" aria-label="GitHub repo Dashboard Data">GitHub Repo <i class="bi bi-github" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="py-5 reveal-section">
             <div class="container py-4">
                 <div class="text-center mb-5">
                     <h2 class="fw-bold display-6 mb-2">Riwayat <span class="gradient-text">Pengalaman</span></h2>
@@ -205,7 +301,7 @@
             </div>
         </section>
 
-         <section id="contact" class="py-5">
+         <section id="contact" class="py-5 reveal-section">
         <div class="container py-4">
             <div class="text-center mb-5">
                 <h2 class="fw-bold display-6 mb-2">Hubungi <span class="gradient-text">Saya</span></h2>

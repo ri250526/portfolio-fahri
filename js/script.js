@@ -1,4 +1,26 @@
 const root = document.documentElement;
+const revealSections = document.querySelectorAll('.reveal-section');
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if (revealSections.length && !prefersReducedMotion) {
+    if ('IntersectionObserver' in window) {
+        root.classList.add('has-scroll-reveal');
+
+        const sectionObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        revealSections.forEach(section => sectionObserver.observe(section));
+    } else {
+        revealSections.forEach(section => section.classList.add('is-visible'));
+    }
+}
+
 const themeToggle = document.getElementById('themeToggle');
 const themeIcon = document.getElementById('themeIcon');
 

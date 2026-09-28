@@ -197,6 +197,16 @@ html.has-scroll-reveal .reveal-section.is-visible {
 	font-size: 0.875rem;
 }
 
+.skill-list li {
+	transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease;
+}
+
+.skill-list li:hover {
+	border-color: var(--primary-color);
+	background-color: var(--primary-color);
+	color: var(--button-text-color);
+}
+
 .projects-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
@@ -527,7 +537,6 @@ textarea {
 
 #typewriter {
 	display: inline-block;
-	min-width: 18ch;
 }
 
 @keyframes blink {

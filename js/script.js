@@ -61,14 +61,44 @@ themeToggle?.addEventListener('click', () => {
 });
 
 const navbarMenu = document.getElementById('navbarNav');
+const navbarLinks = navbarMenu?.querySelectorAll('.nav-link[href^="#"]') ?? [];
 if (navbarMenu && window.bootstrap?.Collapse) {
-    navbarMenu.querySelectorAll('.nav-link[href^="#"]').forEach(link => {
+    navbarLinks.forEach(link => {
         link.addEventListener('click', () => {
             if (navbarMenu.classList.contains('show')) {
                 window.bootstrap.Collapse.getOrCreateInstance(navbarMenu).hide();
             }
         });
     });
+}
+
+const navSections = [...document.querySelectorAll('main section[id]')];
+if (navbarLinks.length && navSections.length) {
+    const updateActiveNavLink = () => {
+        const activationPoint = window.scrollY + 104;
+        let activeSection = navSections[0];
+
+        navSections.forEach(section => {
+            if (section.getBoundingClientRect().top + window.scrollY <= activationPoint) {
+                activeSection = section;
+            }
+        });
+
+        navbarLinks.forEach(link => {
+            const isActive = link.hash === `#${activeSection.id}`;
+            link.classList.toggle('active', isActive);
+
+            if (isActive) {
+                link.setAttribute('aria-current', 'location');
+            } else {
+                link.removeAttribute('aria-current');
+            }
+        });
+    };
+
+    updateActiveNavLink();
+    window.addEventListener('scroll', updateActiveNavLink, { passive: true });
+    window.addEventListener('resize', updateActiveNavLink);
 }
 
 const typewriter = document.getElementById('typewriter');

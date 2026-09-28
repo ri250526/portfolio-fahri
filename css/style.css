@@ -412,6 +412,32 @@ a.social-icon:focus-visible {
 	background-color: color-mix(in srgb, var(--primary-color) 14%, transparent);
 }
 
+.glass-card,
+.skill-group,
+.project-card,
+.timeline-item {
+	min-width: 0;
+}
+
+.glass-card,
+.project-content,
+.timeline-item {
+	overflow-wrap: anywhere;
+}
+
+.glass-card .d-flex > span,
+.glass-card .d-flex > a {
+	min-width: 0;
+	overflow-wrap: anywhere;
+}
+
+.form-control,
+.form-select,
+textarea {
+	width: 100%;
+	max-width: 100%;
+}
+
 @media (hover: hover) {
 	.navbar-toggler:hover,
 	#themeToggle:hover {
@@ -527,7 +553,7 @@ a.social-icon:focus-visible {
 	border: 1px solid var(--border-dark);
 	border-radius: 0.55rem;
 	background: var(--primary-color);
-	color: #fff;
+	color: var(--button-text-color);
 	font-size: 0.78rem;
 	font-weight: 700;
 }
@@ -815,6 +841,66 @@ section[id] { scroll-margin-top: 6rem; }
 
 	.row > * {
 		min-width: 0;
+	}
+}
+
+@media (max-width: 575.98px) {
+	.skills-grid {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.skill-group {
+		padding: 1.15rem;
+	}
+
+	.section-heading h2 {
+		font-size: 1.75rem;
+	}
+
+	.project-content {
+		padding: 1rem;
+	}
+
+	.project-actions {
+		gap: 0.75rem;
+	}
+}
+
+@media (max-width: 359.98px) {
+	.navbar-brand {
+		gap: 0.4rem !important;
+		font-size: 0.95rem !important;
+	}
+
+	.brand-mark {
+		width: 32px;
+		height: 32px;
+		flex-basis: 32px;
+	}
+
+	#home h1 {
+		font-size: 2.35rem;
+	}
+
+	.glass-card {
+		padding: 1rem !important;
+	}
+}
+
+@media (max-height: 500px) and (orientation: landscape) and (max-width: 991.98px) {
+	#home {
+		min-height: auto !important;
+		padding-top: 6rem !important;
+		padding-bottom: 3rem;
+	}
+
+	#home .row {
+		min-height: auto;
+	}
+
+	.hero-img {
+		width: min(40vw, 220px);
+		height: min(40vw, 220px);
 	}
 }
 

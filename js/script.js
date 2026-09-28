@@ -13,7 +13,7 @@ if (revealSections.length && !prefersReducedMotion) {
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.12 });
+        }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
 
         revealSections.forEach(section => sectionObserver.observe(section));
     } else {
@@ -61,9 +61,8 @@ themeToggle?.addEventListener('click', () => {
 });
 
 const navbarMenu = document.getElementById('navbarNav');
-const navbarLinks = navbarMenu?.querySelectorAll('.nav-link[href^="#"]') ?? [];
 if (navbarMenu && window.bootstrap?.Collapse) {
-    navbarLinks.forEach(link => {
+    navbarMenu.querySelectorAll('.nav-link[href^="#"]').forEach(link => {
         link.addEventListener('click', () => {
             if (navbarMenu.classList.contains('show')) {
                 window.bootstrap.Collapse.getOrCreateInstance(navbarMenu).hide();
@@ -72,41 +71,11 @@ if (navbarMenu && window.bootstrap?.Collapse) {
     });
 }
 
-const navSections = [...document.querySelectorAll('main section[id]')];
-if (navbarLinks.length && navSections.length) {
-    const updateActiveNavLink = () => {
-        const activationPoint = window.scrollY + 104;
-        let activeSection = navSections[0];
-
-        navSections.forEach(section => {
-            if (section.getBoundingClientRect().top + window.scrollY <= activationPoint) {
-                activeSection = section;
-            }
-        });
-
-        navbarLinks.forEach(link => {
-            const isActive = link.hash === `#${activeSection.id}`;
-            link.classList.toggle('active', isActive);
-
-            if (isActive) {
-                link.setAttribute('aria-current', 'location');
-            } else {
-                link.removeAttribute('aria-current');
-            }
-        });
-    };
-
-    updateActiveNavLink();
-    window.addEventListener('scroll', updateActiveNavLink, { passive: true });
-    window.addEventListener('resize', updateActiveNavLink);
-}
-
 const typewriter = document.getElementById('typewriter');
 const roles = ['Network Engineer', 'Network Technician', 'Problem Solver'];
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 if (typewriter) {
-    if (reduceMotion) {
+    if (prefersReducedMotion) {
         typewriter.textContent = roles[0];
     } else {
         let roleIndex = 0;
@@ -161,6 +130,12 @@ const contactAlert = document.getElementById('contactAlert');
 const contactEmail = document.getElementById('contactEmail')?.textContent.trim();
 
 if (contactForm && contactAlert) {
+    const showContactAlert = (message, type) => {
+        contactAlert.classList.remove('d-none', 'alert-info', 'alert-danger');
+        contactAlert.classList.add(type);
+        contactAlert.textContent = message;
+    };
+
     contactForm.addEventListener('submit', event => {
         event.preventDefault();
         contactForm.classList.add('was-validated');
@@ -171,9 +146,7 @@ if (contactForm && contactAlert) {
         }
 
         if (!contactEmail) {
-            contactAlert.classList.remove('d-none');
-            contactAlert.classList.replace('alert-info', 'alert-danger');
-            contactAlert.textContent = 'Alamat email tujuan belum tersedia.';
+            showContactAlert('Alamat email tujuan belum tersedia.', 'alert-danger');
             return;
         }
 
@@ -182,7 +155,7 @@ if (contactForm && contactAlert) {
         const body = `Nama: ${fieldValue('name')}\nEmail: ${fieldValue('email')}\n\n${fieldValue('message')}`;
         const mailto = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-        contactAlert.classList.remove('d-none');
+        showContactAlert('Draf pesan akan dibuka di aplikasi email Anda.', 'alert-info');
         window.location.href = mailto;
     });
 }

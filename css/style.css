@@ -506,7 +506,7 @@ textarea {
 	border: 1px solid var(--border-dark);
 	border-radius: 50%;
 	background: var(--primary-color);
-	color: #fff;
+	color: var(--button-text-color);
 	z-index: 1030;
 }
 
@@ -976,4 +976,28 @@ section[id] { scroll-margin-top: 6rem; }
 		width: min(30vw, 220px);
 		height: min(30vw, 220px);
 	}
+}
+
+
+/* ===== Perbaikan bug ===== */
+.fw-extrabold { font-weight: 800; }
+
+/* Teks badge putih di atas warna terang tidak terbaca pada tema gelap */
+.badge.bg-primary,
+.badge.bg-secondary,
+.badge.bg-info {
+	color: var(--button-text-color);
+}
+
+/* Sisa warna tema gelap yang ikut muncul pada tema terang */
+[data-bs-theme="light"] .hero-img { border-color: rgba(0, 0, 0, 0.08); }
+
+[data-bs-theme="light"] .pkl-gallery a {
+	border-color: var(--border-light);
+	background: var(--card-bg-light);
+}
+
+[data-bs-theme="light"]::-webkit-scrollbar-track,
+[data-bs-theme="light"] ::-webkit-scrollbar-track {
+	background: var(--bg-light);
 }
